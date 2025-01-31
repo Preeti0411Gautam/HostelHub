@@ -15,11 +15,11 @@ const serviceSchema = new mongoose.Schema({
         ref: 'Student', 
         required: true
     },
-    assignedTo: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Staff', 
-        required: true
-    },
+    // assignedTo: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'Staff', 
+    //     required: true
+    // },
     status: {
         type: String,
         enum: ['Pending', 'In Progress', 'Completed'],
@@ -33,9 +33,18 @@ const serviceSchema = new mongoose.Schema({
     completionDate: {
         type: Date
     },
-    currentLocation:{
-        type: String , 
-        required: true //jaise electrician cuurently working in room number 1000 , so we can track it 
+    currentLocation: {
+        type: String, 
+        required: true // e.g., electrician currently working in room number 1000, so we can track it
+    },
+    availability: {
+        type: [String],
+        enum: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+        required: true
+    },
+    aadharNumber: {
+        type: String,
+        required: true
     }
 }, { timestamps: true });
 

@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 
-
 const studentSchema = new mongoose.Schema({
   name:{
     type:String, 
@@ -16,10 +15,18 @@ const studentSchema = new mongoose.Schema({
     required:true,
     unique:true
   },
-  hostel: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Hostel', 
-    required: true
+  // hostel: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: 'Hostel', 
+  //   required: true
+  // }
+  branch:{
+    type:String,
+    required : true
+  },
+  residencyStatus:{
+    type:String,
+    enum:["In Hostel", "At Home"]
   }
 });
 

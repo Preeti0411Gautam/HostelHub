@@ -7,31 +7,27 @@ const staffSchema = new mongoose.Schema({
     },
     role: {
         type: String,
-        enum: ['Guard', 'Warden', 'Caretaker', 'Service Staff'],
+        enum: ['Warden', 'Chief Warden', 'Caretaker'],
         required: true
     },
     contactNumber: {
         type: String,
         required: true
     },
-    shift: {
-        type: String,
-        enum: ['Day', 'Night'], 
+    availability: {
+        type: [String],
+        enum: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
         required: true
     },
-    shiftTime: {
-        type: String,
-        enum: ['06:00-20:00', '20:00-06:00'], 
+    email:{
+        type:String,
         required: true
     },
-    hostel: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Hostel', 
+    contactNumber:{
+        type:String,
         required: true
     }
-}, 
-{ timestamps: true }
-);
+}, { timestamps: true });
 
 const Staff = mongoose.model('Staff', staffSchema);
 
